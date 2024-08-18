@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Static Code Analysis') {
         environment {
-            SONAR_URL = "http://54.169.217.0:9000"
+            SONAR_URL = "http://13.212.1.14:9000"
               }
          steps {
              withCredentials([string(credentialsId: 'sonartoken', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -45,8 +45,8 @@ pipeline {
         }
         stage('Update Helm Chart') {
             environment {
-               GIT_REPO_NAME = "venugopalsgnew/ArgoCD_Legro.git"
-               GIT_USER_NAME = "venugopalsgnew"
+               GIT_REPO_NAME = "sandhya2326/ArgoCD_Demo.git"
+               GIT_USER_NAME = "sandhya2326"
                helmChartPath = "ArgoCD_Legro/charts/myapp"
              }
             steps {
@@ -54,8 +54,8 @@ pipeline {
                     sh'''
                       rm -rf ArgoCD_Legro
                       git clone https://${GIT_USER_NAME}:${GITHUB_TOKEN}@github.com/${GIT_REPO_NAME}
-                      git config --global user.email "venugopal.aix@gmail.com"
-                      git config --global user.name "venu"
+                      git config --global user.email "sandhyadevops14@gmail.com"
+                      git config --global user.name "sandhya2326"
                       cd ArgoCD_Legro
                       git pull
                       cd ..
